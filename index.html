@@ -628,7 +628,7 @@
         const navLinks = document.getElementById('nav-links');
 
         menuBtn.addEventListener('click', () => {
-            // Toggles the 'active' class which changes the CSS max-height
+            
             navLinks.classList.toggle('active');
         });
 
@@ -636,7 +636,7 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
-                    // Only close if it's currently open
+                    
                     navLinks.classList.remove('active');
                 }
             });
@@ -647,10 +647,10 @@
         const formMessage = document.getElementById('form-message');
 
         contactForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent actual form submission (since there's no backend)
+            event.preventDefault(); 
             
                         if (!contactForm.checkValidity()) {
-                // If form is invalid, let the browser show default error messages
+                
                 return;
             }
             
@@ -665,4 +665,5 @@
     </script>
 </body>
 </html>
+
 
