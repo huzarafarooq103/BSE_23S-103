@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web Portfolio | Huzaira M.Farooq</title>
+  
+    <style>
+        
+        :root {
+            --primary-color: #00A99D; /* Vibrant Teal - for accents and buttons */
+            --secondary-color: #2A4D69; /* Deep Blue - for dark backgrounds and text */
+            --background-light: #F0F4F8; /* Very light cool gray */
+            --text-dark: #212529;
+            --accent-color: #FF7C43; /* Warm Orange - for highlights */
+            --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+        }
+
+                body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0; /* Increased padding for longer sections */
+            transition: background-color 0.3s ease;
+        }
+
+        h1, h2, h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+       
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 50px; /* Pill shape for modern look */
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #008f86; /* Darker teal */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 169, 157, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+                header {
+            background-color: white;
+            /* EDITED: Enhanced shadow for a more 'floating' look */
+            box-shadow: 0 4px 15px rgba(42, 77, 105, 0.15); /* Secondary color-based shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            /* EDITED: Added subtle border for visual separation */
+            border-bottom: 1px solid #E5E9EC; 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px; /* Slightly taller header */
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none; 
+            flex-direction: column;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            max-height: 0; 
+            transition: max-height 0.4s ease-in-out;
+        }
+        
+        .nav-links.active {
+            display: flex;
+            max-height: 400px; 
+        }
+
+        .nav-links li {
+            text-align: center;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 18px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #E5E9EC;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: block; 
+            font-size: 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--secondary-color);
+            padding: 5px;
+        }
+        
+        /* --- HERO SECTION --- */
+
+        #hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, var(--background-light) 0%, #CCD9E5 100%);
+        }
+
+        .profile-image {
+            width: 180px; /* Slightly larger */
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 6px solid white;
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 35px; /* Increased margin after title */
+            line-height: 1.2;
+        }
+        
+        /* Styling for the new bio content block */
+        .bio-content {
+            max-width: 800px; 
+            margin: 0 auto 40px; 
+            text-align: left; 
+        }
+
+        .bio-content p {
+            font-size: 1.15rem;
+            margin-bottom: 25px; /* Spacing between paragraphs */
+            color: var(--secondary-color);
+        }
+        
+        .bio-content p:last-child {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+        
+        /* --- PROJECTS SECTION --- */
+
+        #projects {
+            background-color: white;
+            text-align: center;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 40px; /* Increased gap */
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #E5E9EC;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px; /* Increased height for better visual impact */
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+        
+        /* --- SKILLS SECTION (NEW) --- */
+        
+        #skills {
+            background-color: var(--background-light);
+            text-align: center;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            text-align: left;
+        }
+        
+        .skill-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            transition: border 0.3s, background-color 0.3s;
+            border-left: 5px solid var(--primary-color); /* Visual highlight */
+        }
+        
+        .skill-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .skill-item p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        /* --- CONTACT SECTION (Interactive Element 2) --- */
+
+        #contact {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            max-width: 650px;
+            margin: 50px auto 0;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            box-sizing: border-box; 
+            background-color: white;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: 2px solid var(--primary-color);
+        }
+
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 180px;
+        }
+        
+        /* Form submission feedback message */
+        #form-message {
+            margin-top: 30px;
+            padding: 18px;
+            border-radius: var(--border-radius);
+            display: none;
+            background-color: var(--accent-color); /* Orange accent color */
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* --- FOOTER --- */
+
+        footer {
+            background-color: var(--text-dark);
+            color: #ADB5BD;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        /* --- DESKTOP MEDIA QUERY --- */
+        @media (min-width: 768px) {
+            
+            /* Navigation adjustments for desktop */
+            .menu-toggle {
+                display: none; 
+            }
+
+            .nav-links {
+                display: flex; 
+                flex-direction: row;
+                position: static;
+                max-height: none;
+                box-shadow: none;
+                width: auto;
+            }
+            
+            .nav-links li {
+                margin-left: 35px;
+            }
+
+            .nav-links a {
+                padding: 0;
+                border-bottom: none;
+                line-height: 80px; /* Align with header height */
+            }
+
+            .nav-links a:hover {
+                background-color: transparent;
+                text-decoration: none;
+                color: var(--primary-color);
+                border-bottom: 3px solid var(--primary-color);
+                padding-bottom: 2px;
+            }
+            
+            /* Project Grid adjustment for desktop (3 columns) */
+            .project-grid {
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            
+            /* Skills Grid adjustment for desktop (4 columns) */
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">Huzaira M.Farooq<span>.dev</span></a>
+            
+            <!-- Mobile Menu Toggle Button (Interactive Element 1) -->
+            <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle navigation menu">
+                &#9776; <!-- Hamburger icon -->
+            </button>
+            
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="btn btn-primary" style="border-radius: 8px;">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero / About Section -->
+        <section id="hero" class="section-padding">
+            <div class="container">
+                <!-- HD Placeholder Image for profile -->
+                <img 
+                    src="" 
+                    alt="Professional Profile" 
+                    class="profile-image" 
+                    onerror="this.onerror=null;this.src='https://placehold.co/180x180/00A99D/ffffff?text=HF'"
+                >
+                <h1>Huzaira M.Farooq: Student Web Engineer & Creative Developer</h1>
+                
+                <!-- NEW DETAILED BIO CONTENT BLOCK -->
+                <div class="bio-content">
+                    <p>
+                        I am currently a dedicated Software Engineering student focused on mastering the foundational pillars of the web: HTML5, CSS3, and Vanilla JavaScript. My academic journey centers on developing robust, high-performance, and genuinely mobile-first web applications that deliver exceptional user experiences across all devices.
+                    </p>
+                    <p>
+                        My passion lies at the intersection of logic and aesthetics. I thrive on the challenge of translating complex requirements into clean, semantic code and visually appealing, responsive designs. I am particularly interested in accessibility (A11y), ensuring that every project I build is usable by the broadest possible audience, including those using assistive technologies.
+                    </p>
+                    <p style="color: var(--secondary-color); font-weight: 500;">
+                        I believe in building with fundamental technologies first, which solidifies my understanding before moving to frameworks. Currently, I am expanding my knowledge in server-side integration and performance optimization techniques to become a well-rounded full-stack developer. Let's build something efficient and beautiful together.
+                    </p>
+                </div>
+                
+                
+                <a href="#contact" class="btn btn-primary">Start a Conversation</a>
+                <a href="#projects" class="btn btn-secondary" style="margin-left: 15px;">View My Work</a>
+            </div>
+        </section>
+        
+
+        <section id="skills" class="section-padding">
+            <div class="container">
+                <h2 style="margin-bottom: 40px;">My Core Competencies</h2>
+                <p style="max-width: 800px; margin: 0 auto 50px;">I am proficient in the following foundational web development areas, which align directly with best practices for mobile-friendly, non-framework design.</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>HTML5 Semantics</h4>
+                        <p>Deep understanding of semantic HTML tags to ensure high accessibility and superior SEO performance for all projects.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Responsive CSS3</h4>
+                        <p>Expertise in media queries, Flexbox, and CSS Grid for creating layouts that adapt seamlessly to any device size or orientation.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Vanilla JavaScript</h4>
+                        <p>Solid skills in DOM manipulation, event handling, and creating interactive client-side components without relying on external libraries.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Git & Version Control</h4>
+                        <p>Experienced in using Git for collaborative development, branching, merging, and maintaining code integrity across teams.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <section id="projects" class="section-padding">
+            <div class="container">
+                <h2>Featured Projects Showcase</h2>
+                <p style="max-width: 800px; margin: 0 auto 50px;">A showcase of my recent work, demonstrating my skills in HTML, CSS, and pure JavaScript functionality.</p>
+
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        
+                        <img 
+                            src="C:\Users\Huzii\Downloads\3c1b18105743373.5f7f9a60af3b7.jpg" 
+                            alt="Project 1 Thumbnail" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x500/00A99D/FFFFFF?text=P+1+Mobile+Design'"
+                        >
+                        <div class="project-content">
+                            <h3>Responsive Landing Page</h3>
+                            <p>A corporate landing page focused on performance and accessibility, ensuring fast load times and perfect mobile compatibility.</p>
+                            <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Explore Case Study &rarr;</a>
+                        </div>
+                    </div>
+                    
+                 
+                    <div class="project-card">
+                        
+                        <img 
+                            src="C:\Users\Huzii\Downloads\R.jpeg" 
+                            alt="Project 2 Thumbnail" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x500/2A4D69/FFFFFF?text=P+2+E-Commerce+Layout'"
+                        >
+                        <div class="project-content">
+                            <h3>Clean E-Commerce Mockup</h3>
+                            <p>An intricate exercise in using CSS Grid for product catalog displays and Flexbox for the responsive checkout process.</p>
+                            <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Explore Case Study &rarr;</a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="project-card">
+                       
+                        <img 
+                            src="C:\Users\Huzii\Downloads\OIP.webp" 
+                            alt="Project 3 Thumbnail" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x500/FF7C43/FFFFFF?text=P+3+Form+Validation'"
+                        >
+                        <div class="project-content">
+                            <h3>Advanced Registration Form</h3>
+                            <p>Focuses on complex CSS pseudo-classes and client-side JavaScript validation for a smooth user experience.</p>
+                            <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Explore Case Study &rarr;</a>
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="project-card">
+                        <img 
+                            src="C:\Users\Huzii\Downloads\Screen-Shot-2022-08-11-at-8.44.01-AM.png" 
+                            alt="Project 4 Thumbnail" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x500/556B8A/FFFFFF?text=P+4+Simple+Game'"
+                        >
+                        <div class="project-content">
+                            <h3>Pure JS Mini-Game</h3>
+                            <p>A demonstration of core JavaScript logic by building a small, interactive puzzle game completely without external libraries.</p>
+                            <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Explore Case Study &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="project-card">
+                        <img 
+                            src="C:\Users\Huzii\Downloads\Animation-in-a-Isometric-Mockup.avif" 
+                            alt="Project 5 Thumbnail" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x500/8B8C8D/FFFFFF?text=P+5+CSS+Animations'"
+                        >
+                        <div class="project-content">
+                            <h3>CSS Animation Study</h3>
+                            <p>A collection of subtle and complex CSS keyframe animations designed to enhance UI elements without performance overhead.</p>
+                            <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Explore Case Study &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+   
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <h2>Ready to Connect?</h2>
+                <p>I'm available for new projects, internship opportunities, and collaborative ventures.</p>
+
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details or Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your project or opportunity..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color: var(--accent-color); border-color: var(--accent-color);">Send Message</button>
+                </form>
+
+                
+                <div id="form-message" role="alert">
+                    Success! Your message has been noted. I'll reply to your email shortly.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 <a href="#">Huzaira M.Farooq</a>. All rights reserved. | Built for the Web Engineering Assignment.</p>
+        </div>
+    </footer>
+
+
+    <script>
+                const menuBtn = document.getElementById('menu-toggle-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            // Toggles the 'active' class which changes the CSS max-height
+            navLinks.classList.toggle('active');
+        });
+
+    
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    // Only close if it's currently open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+       
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent actual form submission (since there's no backend)
+            
+                        if (!contactForm.checkValidity()) {
+                // If form is invalid, let the browser show default error messages
+                return;
+            }
+            
+            
+            contactForm.reset();
+            
+            formMessage.style.display = 'block';
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 6000);
+        });
+    </script>
+</body>
+</html>
