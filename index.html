@@ -8,11 +8,11 @@
     <style>
         
         :root {
-            --primary-color: #00A99D; /* Vibrant Teal - for accents and buttons */
-            --secondary-color: #2A4D69; /* Deep Blue - for dark backgrounds and text */
-            --background-light: #F0F4F8; /* Very light cool gray */
+            --primary-color: #00A99D; 
+            --secondary-color: #2A4D69; 
+            --background-light: #F0F4F8; 
             --text-dark: #212529;
-            --accent-color: #FF7C43; /* Warm Orange - for highlights */
+            --accent-color: #FF7C43; 
             --shadow-soft: 0 6px 20px rgba(0, 0, 0, 0.1);
             --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.2);
             --border-radius: 12px;
@@ -34,7 +34,7 @@
         }
 
         .section-padding {
-            padding: 100px 0; /* Increased padding for longer sections */
+            padding: 100px 0; 
             transition: background-color 0.3s ease;
         }
 
@@ -53,7 +53,7 @@
         .btn {
             display: inline-block;
             padding: 14px 30px;
-            border-radius: 50px; /* Pill shape for modern look */
+            border-radius: 50px; 
             text-decoration: none;
             font-weight: bold;
             letter-spacing: 0.5px;
@@ -70,7 +70,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #008f86; /* Darker teal */
+            background-color: #008f86; 
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 169, 157, 0.4);
         }
@@ -87,12 +87,12 @@
         }
                 header {
             background-color: white;
-            /* EDITED: Enhanced shadow for a more 'floating' look */
-            box-shadow: 0 4px 15px rgba(42, 77, 105, 0.15); /* Secondary color-based shadow */
+            
+            box-shadow: 0 4px 15px rgba(42, 77, 105, 0.15); 
             position: sticky;
             top: 0;
             z-index: 1000;
-            /* EDITED: Added subtle border for visual separation */
+            
             border-bottom: 1px solid #E5E9EC; 
         }
 
@@ -100,7 +100,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px; /* Slightly taller header */
+            height: 80px; 
         }
 
         .logo {
@@ -166,7 +166,7 @@
             padding: 5px;
         }
         
-        /* --- HERO SECTION --- */
+        
 
         #hero {
             text-align: center;
@@ -175,7 +175,7 @@
         }
 
         .profile-image {
-            width: 180px; /* Slightly larger */
+            width: 180px; 
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
@@ -186,11 +186,11 @@
 
         #hero h1 {
             font-size: 3rem;
-            margin-bottom: 35px; /* Increased margin after title */
+            margin-bottom: 35px; 
             line-height: 1.2;
         }
         
-        /* Styling for the new bio content block */
+        
         .bio-content {
             max-width: 800px; 
             margin: 0 auto 40px; 
@@ -199,7 +199,7 @@
 
         .bio-content p {
             font-size: 1.15rem;
-            margin-bottom: 25px; /* Spacing between paragraphs */
+            margin-bottom: 25px; 
             color: var(--secondary-color);
         }
         
@@ -208,7 +208,7 @@
             font-weight: 500;
         }
         
-        /* --- PROJECTS SECTION --- */
+        
 
         #projects {
             background-color: white;
@@ -239,7 +239,7 @@
 
         .project-card img {
             width: 100%;
-            height: 250px; /* Increased height for better visual impact */
+            height: 250px; 
             object-fit: cover;
             display: block;
         }
@@ -253,7 +253,7 @@
             margin-bottom: 10px;
         }
         
-        /* --- SKILLS SECTION (NEW) --- */
+        
         
         #skills {
             background-color: var(--background-light);
@@ -288,7 +288,7 @@
             color: #555;
         }
         
-        /* --- CONTACT SECTION (Interactive Element 2) --- */
+        
 
         #contact {
             background-color: var(--secondary-color);
@@ -344,18 +344,18 @@
             min-height: 180px;
         }
         
-        /* Form submission feedback message */
+        
         #form-message {
             margin-top: 30px;
             padding: 18px;
             border-radius: var(--border-radius);
             display: none;
-            background-color: var(--accent-color); /* Orange accent color */
+            background-color: var(--accent-color); 
             color: white;
             font-weight: bold;
         }
         
-        /* --- FOOTER --- */
+        
 
         footer {
             background-color: var(--text-dark);
@@ -370,10 +370,10 @@
             text-decoration: none;
         }
         
-        /* --- DESKTOP MEDIA QUERY --- */
+        
         @media (min-width: 768px) {
             
-            /* Navigation adjustments for desktop */
+            
             .menu-toggle {
                 display: none; 
             }
@@ -394,7 +394,7 @@
             .nav-links a {
                 padding: 0;
                 border-bottom: none;
-                line-height: 80px; /* Align with header height */
+                line-height: 80px; 
             }
 
             .nav-links a:hover {
@@ -405,12 +405,12 @@
                 padding-bottom: 2px;
             }
             
-            /* Project Grid adjustment for desktop (3 columns) */
+            
             .project-grid {
                 grid-template-columns: repeat(3, 1fr); 
             }
             
-            /* Skills Grid adjustment for desktop (4 columns) */
+           
             .skills-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
@@ -420,14 +420,14 @@
 </head>
 <body>
 
-    <!-- Header and Navigation -->
+    
     <header>
         <div class="container navbar">
             <a href="#" class="logo">Huzaira M.Farooq<span>.dev</span></a>
             
-            <!-- Mobile Menu Toggle Button (Interactive Element 1) -->
+            
             <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle navigation menu">
-                &#9776; <!-- Hamburger icon -->
+                &#9776; 
             </button>
             
             <nav>
@@ -443,10 +443,10 @@
     </header>
 
     <main>
-        <!-- Hero / About Section -->
+       
         <section id="hero" class="section-padding">
             <div class="container">
-                <!-- HD Placeholder Image for profile -->
+                
                 <img 
                     src="" 
                     alt="Professional Profile" 
@@ -455,7 +455,7 @@
                 >
                 <h1>Huzaira M.Farooq: Student Web Engineer & Creative Developer</h1>
                 
-                <!-- NEW DETAILED BIO CONTENT BLOCK -->
+                
                 <div class="bio-content">
                     <p>
                         I am currently a dedicated Software Engineering student focused on mastering the foundational pillars of the web: HTML5, CSS3, and Vanilla JavaScript. My academic journey centers on developing robust, high-performance, and genuinely mobile-first web applications that deliver exceptional user experiences across all devices.
@@ -512,7 +512,7 @@
                     <div class="project-card">
                         
                         <img 
-                            src="C:\Users\Huzii\Downloads\3c1b18105743373.5f7f9a60af3b7.jpg" 
+                            src="3c1b18105743373.5f7f9a60af3b7.jpg" 
                             alt="Project 1 Thumbnail" 
                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/00A99D/FFFFFF?text=P+1+Mobile+Design'"
                         >
@@ -527,7 +527,7 @@
                     <div class="project-card">
                         
                         <img 
-                            src="C:\Users\Huzii\Downloads\R.jpeg" 
+                            src="R.jpeg" 
                             alt="Project 2 Thumbnail" 
                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/2A4D69/FFFFFF?text=P+2+E-Commerce+Layout'"
                         >
@@ -542,7 +542,7 @@
                     <div class="project-card">
                        
                         <img 
-                            src="C:\Users\Huzii\Downloads\OIP.webp" 
+                            src="OIP.webp" 
                             alt="Project 3 Thumbnail" 
                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/FF7C43/FFFFFF?text=P+3+Form+Validation'"
                         >
@@ -556,7 +556,7 @@
                    
                     <div class="project-card">
                         <img 
-                            src="C:\Users\Huzii\Downloads\Screen-Shot-2022-08-11-at-8.44.01-AM.png" 
+                            src="Screen-Shot-2022-08-11-at-8.44.01-AM.png" 
                             alt="Project 4 Thumbnail" 
                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/556B8A/FFFFFF?text=P+4+Simple+Game'"
                         >
@@ -570,7 +570,7 @@
                     
                     <div class="project-card">
                         <img 
-                            src="C:\Users\Huzii\Downloads\Animation-in-a-Isometric-Mockup.avif" 
+                            src="Animation-in-a-Isometric-Mockup.avif" 
                             alt="Project 5 Thumbnail" 
                             onerror="this.onerror=null;this.src='https://placehold.co/800x500/8B8C8D/FFFFFF?text=P+5+CSS+Animations'"
                         >
@@ -665,3 +665,4 @@
     </script>
 </body>
 </html>
+
